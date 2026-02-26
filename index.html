@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTA Unit & Structure Stats Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-accent-light: #ff6b6b;
+            --color-text: #eaeaea;
+            --color-text-dim: #a0a0a0;
+            --color-border: #404040;
+            --color-success: #51cf66;
+            --color-warning: #ffd93d;
+            --color-info: #6bceff;
+            --color-enhanced: #ffffff;
+            --color-classic: #d4af37;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--color-text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--color-accent);
+            text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        header p {
+            color: var(--color-text-dim);
+            font-size: 0.95em;
+        }
+
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .control-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            background: var(--color-secondary);
+            color: var(--color-text);
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .control-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: var(--color-secondary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .tab-btn:hover {
+            background: var(--color-primary);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .tab-btn.active {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        .entity-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .entity-card {
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .entity-card:hover {
+            background: var(--color-primary);
+            border-color: var(--color-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+
+        .entity-card-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+        }
+
+        .entity-card-id {
+            font-size: 0.85em;
+            color: var(--color-text-dim);
+            margin-bottom: 8px;
+        }
+
+        .entity-card-type {
+            display: inline-block;
+            padding: 3px 8px;
+            background: var(--color-accent);
+            color: white;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        /* Detail View */
+        .detail-view {
+            display: none;
+        }
+
+        .detail-view.active {
+            display: block;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .detail-header h2 {
+            font-size: 2em;
+            color: var(--color-accent);
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--color-accent-light);
+            transform: translateX(-2px);
+        }
+
+        .meta-badge {
+            padding: 8px 12px;
+            background: var(--color-primary);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .meta-badge.type-infantry {
+            border-left: 3px solid var(--color-info);
+        }
+
+        .meta-badge.type-vehicle {
+            border-left: 3px solid var(--color-warning);
+        }
+
+        .meta-badge.type-building {
+            border-left: 3px solid var(--color-accent-light);
+        }
+
+        .meta-badge.type-naval {
+            border-left: 3px solid var(--color-info);
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .property-section {
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .property-section-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 10px;
+        }
+
+        .property-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .property-item:last-child {
+            border-bottom: none;
+        }
+
+        .property-label {
+            font-weight: 600;
+            color: var(--color-text);
+            min-width: 180px;
+            margin-right: 15px;
+        }
+
+        .property-value {
+            color: var(--color-text);
+        }
+
+        .compare-values {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .enhanced {
+            color: var(--color-enhanced);
+            font-weight: 500;
+        }
+
+        .classic {
+            color: var(--color-classic);
+        }
+
+        .weapon-section {
+            background: var(--color-secondary);
+            border: 2px solid var(--color-warning);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .weapon-slot-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--color-warning);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weapon-property {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .weapon-property:last-child {
+            border-bottom: none;
+        }
+
+        .reference-detail {
+            background: var(--color-primary);
+            border-left: 3px solid var(--color-success);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        .reference-title {
+            font-weight: 600;
+            color: var(--color-success);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reference-prop {
+            padding: 8px 0;
+            font-size: 0.95em;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-left: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            font-size: 1.5em;
+            color: var(--color-text);
+            padding: 40px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--color-text-dim);
+            padding: 40px;
+            font-size: 1.1em;
+        }
+
+        .legend {
+            display: flex;
+            gap: 30px;
+            padding: 15px;
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid var(--color-border);
+        }
+
+        .legend-enhanced {
+            background: var(--color-enhanced);
+        }
+
+        .legend-classic {
+            background: var(--color-classic);
+        }
+
+        @media (max-width: 1200px) {
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DTA Unit and Structure Stats Dashboard</h1>
+            <p>Dawn of the Tiberium Age</p>
+        </header>
+
+        <div id="loading" class="loading">Loading game data...</div>
+
+        <div id="mainContent" style="display: none;">
+            <div id="controls" class="controls">
+                <div class="control-group">
+                    <label for="searchInput">🔍 Search</label>
+                    <input type="text" id="searchInput" placeholder="Search units, buildings, aircraft...">
+                </div>
+            </div>
+
+            <div class="tabs" id="tabs">
+                <button class="tab-btn active" data-tab="buildings">Buildings</button>
+                <button class="tab-btn" data-tab="infantry">Infantry</button>
+                <button class="tab-btn" data-tab="vehicles">Vehicles</button>
+                <button class="tab-btn" data-tab="naval">Naval</button>
+                <button class="tab-btn" data-tab="aircraft">Aircraft</button>
+            </div>
+
+            <!-- List View -->
+            <div id="listView" class="list-view">
+                <div id="entityCards" class="entity-cards"></div>
+                <div id="noResults" class="no-results" style="display: none;">
+                    <p>No entities found matching your search criteria.</p>
+                </div>
+            </div>
+
+            <!-- Detail View -->
+            <div id="detailView" class="detail-view">
+                <div class="detail-header">
+                    <div>
+                        <h2 id="detailTitle"></h2>
+                        <div class="meta-badge" id="typeBadge"></div>
+                    </div>
+                    <button class="back-btn" onclick="dashboard.backToList()">← Back to List</button>
+                </div>
+
+                <div id="detailViewLegend" class="legend" style="display: none;">
+                    <div class="legend-item">
+                        <div class="legend-color legend-enhanced"></div>
+                        <span>Enhanced Mode</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-classic"></div>
+                        <span>Classic Mode</span>
+                    </div>
+                </div>
+
+                <div id="detailContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class DTAStatsDashboard {
+            constructor() {
+                this.gameData = null;
+                this.currentTab = 'buildings';
+                this.filteredEntities = [];
+                this.selectedEntity = null;
+                this.init();
+            }
+
+            async init() {
+                await this.loadData();
+                this.setupEventListeners();
+                this.render();
+            }
+
+            async loadData() {
+                try {
+                    const response = await fetch('game_data.json');
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    this.gameData = await response.json();
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                } catch (error) {
+                    console.error('Error loading game data:', error);
+                    document.getElementById('loading').innerHTML = 
+                        '<p style="color: var(--color-accent-light);">⚠️ Error loading game data. Make sure game_data.json is in the same directory.</p>';
+                }
+            }
+
+            setupEventListeners() {
+                document.getElementById('searchInput').addEventListener('input', () => this.render());
+
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        this.currentTab = e.target.dataset.tab;
+                        this.render();
+                    });
+                });
+            }
+
+            getAllEntities() {
+                if (!this.gameData) return [];
+                
+                const mode = this.gameData.modes.classic;
+                const entities = [];
+                
+                const categories = {
+                    'buildings': 'Building',
+                    'infantry': 'Infantry',
+                    'vehicles': 'Vehicle',
+                    'naval': 'Naval',
+                    'aircraft': 'Aircraft'
+                };
+                
+                for (const [catKey, catName] of Object.entries(categories)) {
+                    if (mode[catKey]) {
+                        for (const [id, entity] of Object.entries(mode[catKey])) {
+                            entities.push({...entity, Type: catName});
+                        }
+                    }
+                }
+                
+                return entities;
+            }
+
+            filterEntities() {
+                if (!this.gameData) return [];
+                
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const mode = this.gameData.modes.classic;
+
+                let entities = [];
+
+                const tabMap = {
+                    'buildings': ['buildings'],
+                    'infantry': ['infantry'],
+                    'vehicles': ['vehicles'],
+                    'naval': ['naval'],
+                    'aircraft': ['aircraft']
+                };
+
+                const typeMap = {
+                    'buildings': 'Building',
+                    'infantry': 'Infantry',
+                    'vehicles': 'Vehicle',
+                    'naval': 'Naval',
+                    'aircraft': 'Aircraft'
+                };
+
+                const categoriesToLoad = tabMap[this.currentTab] || [];
+                for (const catKey of categoriesToLoad) {
+                    if (mode[catKey]) {
+                        for (const [id, entity] of Object.entries(mode[catKey])) {
+                            entities.push({...entity, Type: typeMap[catKey]});
+                        }
+                    }
+                }
+
+                if (searchTerm) {
+                    entities = entities.filter(e => 
+                        (e.Name && e.Name.toLowerCase().includes(searchTerm)) ||
+                        (e.ID && e.ID.toLowerCase().includes(searchTerm))
+                    );
+                }
+
+                this.filteredEntities = entities.sort((a, b) => (a.Name || a.ID).localeCompare(b.Name || b.ID));
+                return this.filteredEntities;
+            }
+
+            render() {
+                const entities = this.filterEntities();
+                const listView = document.getElementById('listView');
+                const cardsContainer = document.getElementById('entityCards');
+                const noResults = document.getElementById('noResults');
+
+                if (entities.length === 0) {
+                    listView.style.display = 'block';
+                    cardsContainer.innerHTML = '';
+                    noResults.style.display = 'block';
+                    return;
+                }
+
+                listView.style.display = 'block';
+                noResults.style.display = 'none';
+
+                cardsContainer.innerHTML = entities.map(entity => `
+                    <div class="entity-card" onclick="dashboard.showDetails('${entity.ID}', '${entity.Type}')">
+                        <div class="entity-card-name">${entity.Name || entity.ID}</div>
+                        <div class="entity-card-id">${entity.ID}</div>
+                        <span class="entity-card-type">${entity.Type}</span>
+                    </div>
+                `).join('');
+            }
+
+            showDetails(entityId, entityType) {
+                const mode = this.gameData.modes;
+                const typeMap = {
+                    'Infantry': 'infantry',
+                    'Vehicle': 'vehicles',
+                    'Naval': 'naval',
+                    'Aircraft': 'aircraft',
+                    'Building': 'buildings'
+                };
+                const category = typeMap[entityType];
+                
+                const classicEntity = mode.classic[category][entityId];
+                const enhancedEntity = mode.enhanced[category][entityId];
+                
+                if (!classicEntity) return;
+
+                this.selectedEntity = {classicEntity, enhancedEntity, entityType};
+                
+                // Hide controls and tabs
+                document.getElementById('controls').style.display = 'none';
+                document.getElementById('tabs').style.display = 'none';
+                
+                document.getElementById('listView').style.display = 'none';
+                document.getElementById('detailView').classList.add('active');
+                document.getElementById('detailViewLegend').style.display = 'block';
+
+                document.getElementById('detailTitle').innerHTML = `${classicEntity.Name || entityId} <span id="detailId" style="font-size: 0.8em; color: var(--color-text-dim);"></span>`;
+                document.getElementById('detailId').textContent = `(${entityId})`;
+                document.getElementById('typeBadge').className = `meta-badge type-${entityType.toLowerCase()}`;
+                document.getElementById('typeBadge').textContent = entityType;
+
+                this.populateProperties(classicEntity, enhancedEntity);
+            }
+
+            backToList() {
+                document.getElementById('detailView').classList.remove('active');
+                document.getElementById('detailViewLegend').style.display = 'none';
+                
+                // Show controls and tabs
+                document.getElementById('controls').style.display = 'flex';
+                document.getElementById('tabs').style.display = 'flex';
+                
+                // Clear search and reset tabs
+                document.getElementById('searchInput').value = '';
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector('[data-tab="buildings"]').classList.add('active');
+                this.currentTab = 'buildings';
+                
+                document.getElementById('listView').style.display = 'block';
+                this.selectedEntity = null;
+                this.render();
+            }
+
+            formatPropertyValue(classicValue, enhancedValue) {
+                if (!classicValue && !enhancedValue) return '—';
+                
+                const isDifferent = classicValue !== enhancedValue && enhancedValue !== undefined && classicValue !== undefined;
+                
+                if (isDifferent) {
+                    return `<span class="property-value"><span class="enhanced">${enhancedValue || classicValue}</span> <span style="color: var(--color-text-dim);">(<span class="classic">${classicValue}</span>)</span></span>`;
+                } else {
+                    return `<span class="property-value">${classicValue || enhancedValue || '—'}</span>`;
+                }
+            }
+
+            renderWeaponSlotContent(weaponSlot, classicWeapon, enhancedWeapon) {
+                let html = '';
+
+                const classicWeaponId = classicWeapon?.ID || '—';
+                const enhancedWeaponId = enhancedWeapon?.ID || '—';
+                
+                html += `<div class="weapon-property">
+                    <span class="property-label">Weapon ID</span>
+                    ${this.formatPropertyValue(classicWeaponId, enhancedWeaponId)}
+                </div>`;
+
+                // Calculate and display DPS (Damage Per Second)
+                // DPS = (Damage / ROF) * 60
+                const classicDamage = parseFloat(classicWeapon?.Damage) || 0;
+                const classicROF = parseFloat(classicWeapon?.ROF) || 1;
+                const classicDPS = classicROF > 0 ? ((classicDamage / classicROF) * 60).toFixed(2) : '—';
+                
+                const enhancedDamage = parseFloat(enhancedWeapon?.Damage) || 0;
+                const enhancedROF = parseFloat(enhancedWeapon?.ROF) || 1;
+                const enhancedDPS = enhancedROF > 0 ? ((enhancedDamage / enhancedROF) * 60).toFixed(2) : '—';
+                
+                html += `<div class="weapon-property">
+                    <span class="property-label">DPS</span>
+                    ${this.formatPropertyValue(classicDPS, enhancedDPS)}
+                </div>`;
+
+                // Calculate DPS against each armor type based on warhead multipliers
+                const classicWh = classicWeapon?.WarheadDetails;
+                const enhancedWh = enhancedWeapon?.WarheadDetails;
+                
+                // Get all armor-specific damage modifiers from warheads
+                const armorDamageProps = new Set();
+                if (classicWh?.Properties) {
+                    Object.keys(classicWh.Properties).filter(k => k.startsWith('Damage VS')).forEach(k => armorDamageProps.add(k));
+                }
+                if (enhancedWh?.Properties) {
+                    Object.keys(enhancedWh.Properties).filter(k => k.startsWith('Damage VS')).forEach(k => armorDamageProps.add(k));
+                }
+                
+                // Render DPS per armor type if warheads have damage modifiers
+                if (armorDamageProps.size > 0) {
+                    html += `<div class="reference-detail" style="margin-top: 15px;">
+                        <div class="reference-title">
+                            ⚡ DPS by Armor Type
+                        </div>`;
+                    
+                    for (const armorProp of Array.from(armorDamageProps).sort()) {
+                        const classicArmorModStr = classicWh?.Properties?.[armorProp] || '100%';
+                        const enhancedArmorModStr = enhancedWh?.Properties?.[armorProp] || '100%';
+                        
+                        // Parse percentage values
+                        const classicMod = parseFloat(classicArmorModStr) / 100;
+                        const enhancedMod = parseFloat(enhancedArmorModStr) / 100;
+                        
+                        const classicArmorDPS = classicDPS !== '—' ? (parseFloat(classicDPS) * classicMod).toFixed(2) : '—';
+                        const enhancedArmorDPS = enhancedDPS !== '—' ? (parseFloat(enhancedDPS) * enhancedMod).toFixed(2) : '—';
+                        
+                        html += `<div class="reference-prop">
+                            <span class="property-label">${armorProp}</span>
+                            ${this.formatPropertyValue(classicArmorDPS, enhancedArmorDPS)}
+                        </div>`;
+                    }
+                    
+                    html += `</div>`;
+                }
+
+                // Get all weapon properties
+                const allWeaponProps = new Set([
+                    ...(classicWeapon ? Object.keys(classicWeapon).filter(k => !['ProjectileDetails', 'WarheadDetails', 'ID', 'Name'].includes(k)) : []),
+                    ...(enhancedWeapon ? Object.keys(enhancedWeapon).filter(k => !['ProjectileDetails', 'WarheadDetails', 'ID', 'Name'].includes(k)) : [])
+                ]);
+
+                for (const prop of ['Damage', 'ROF', 'Range', 'Speed', 'Projectile', 'Warhead']) {
+                    if (allWeaponProps.has(prop)) {
+                        const cVal = classicWeapon?.[prop] || '—';
+                        const eVal = enhancedWeapon?.[prop] || '—';
+                        
+                        html += `<div class="weapon-property">
+                            <span class="property-label">${prop}</span>
+                            ${this.formatPropertyValue(cVal, eVal)}
+                        </div>`;
+                    }
+                }
+
+                // Display "Damage VS * Armor" properties
+                const damageVSProps = Array.from(allWeaponProps).filter(p => p.startsWith('Damage VS'));
+                for (const prop of damageVSProps) {
+                    const cVal = classicWeapon?.[prop] || '—';
+                    const eVal = enhancedWeapon?.[prop] || '—';
+                    
+                    html += `<div class="weapon-property">
+                        <span class="property-label">${prop}</span>
+                        ${this.formatPropertyValue(cVal, eVal)}
+                    </div>`;
+                }
+
+                // Render Projectile details if available
+                const classicProj = classicWeapon?.ProjectileDetails;
+                const enhancedProj = enhancedWeapon?.ProjectileDetails;
+                if (classicProj || enhancedProj) {
+                    html += this.renderDetailReference('Projectile', classicProj, enhancedProj);
+                }
+
+                // Render Warhead details if available
+                const classicWh_details = classicWeapon?.WarheadDetails;
+                const enhancedWh_details = enhancedWeapon?.WarheadDetails;
+                if (classicWh_details || enhancedWh_details) {
+                    html += this.renderDetailReference('Warhead', classicWh_details, enhancedWh_details);
+                }
+
+                return html;
+            }
+
+            renderDetailReference(refName, classicRef, enhancedRef) {
+                let html = `<div class="reference-detail">
+                    <div class="reference-title">
+                        ⚙️ ${refName} Details
+                    </div>`;
+
+                const classicRefId = classicRef?.ID || enhancedRef?.ID || '—';
+                const enhancedRefId = enhancedRef?.ID || classicRef?.ID || '—';
+                
+                html += `<div class="reference-prop">
+                    <span class="property-label">${refName} ID</span>
+                    ${this.formatPropertyValue(classicRefId, enhancedRefId)}
+                </div>`;
+
+                if (classicRef?.Name || enhancedRef?.Name) {
+                    const classicName = classicRef?.Name || enhancedRef?.Name;
+                    const enhancedName = enhancedRef?.Name || classicRef?.Name;
+                    html += `<div class="reference-prop">
+                        <span class="property-label">${refName} Name</span>
+                        ${this.formatPropertyValue(classicName, enhancedName)}
+                    </div>`;
+                }
+
+                if ((classicRef?.Properties && Object.keys(classicRef.Properties).length > 0) ||
+                    (enhancedRef?.Properties && Object.keys(enhancedRef.Properties).length > 0)) {
+                    html += `<div class="reference-prop" style="margin-top: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
+                        <span class="property-label" style="font-weight: 600;">Properties</span>
+                    </div>`;
+
+                    const allProps = new Set([
+                        ...(classicRef?.Properties ? Object.keys(classicRef.Properties) : []),
+                        ...(enhancedRef?.Properties ? Object.keys(enhancedRef.Properties) : [])
+                    ]);
+
+                    for (const prop of Array.from(allProps).sort()) {
+                        const cVal = classicRef?.Properties?.[prop] || '—';
+                        const eVal = enhancedRef?.Properties?.[prop] || '—';
+                        
+                        html += `<div class="reference-prop">
+                            <span class="property-label">${prop}</span>
+                            ${this.formatPropertyValue(cVal, eVal)}
+                        </div>`;
+                    }
+                }
+
+                html += `</div>`;
+                return html;
+            }
+
+            populateProperties(classicEntity, enhancedEntity) {
+                let html = '';
+
+                // Group properties by category
+                const categories = {
+                    'Core Stats': ['Strength', 'Armor', 'Cost', 'Points'],
+                    'Movement': ['Speed', 'SpeedType', 'Sight', 'MovementZone'],
+                    'Combat': ['Primary', 'Secondary', 'Elite', 'TechLevel', 'Weapon'],
+                    'Abilities': ['Crusher', 'Crewed', 'Trainable', 'Explosion'],
+                    'Special': ['Owner', 'Category', 'Prerequisite', 'VeteranAbilities', 'EliteAbilities']
+                };
+
+                // Collect all unique properties
+                const allProps = new Set([
+                    ...(classicEntity?.AllProperties ? Object.keys(classicEntity.AllProperties) : []),
+                    ...(enhancedEntity?.AllProperties ? Object.keys(enhancedEntity.AllProperties) : [])
+                ]);
+
+                // Filter out weapon-related properties (handled separately)
+                const nonWeaponProps = Array.from(allProps).filter(p => !['Primary', 'Secondary', 'Elite'].includes(p));
+
+                // Organize properties by category
+                for (const [categoryName, categoryProps] of Object.entries(categories)) {
+                    const propsInCategory = categoryProps.filter(p => nonWeaponProps.includes(p));
+                    
+                    if (propsInCategory.length > 0) {
+                        html += `<div class="property-section">
+                            <div class="property-section-title">${categoryName}</div>`;
+
+                        for (const prop of propsInCategory) {
+                            const cVal = classicEntity?.AllProperties?.[prop] || '—';
+                            const eVal = enhancedEntity?.AllProperties?.[prop] || '—';
+                            
+                            html += `<div class="property-item">
+                                <span class="property-label">${prop}</span>
+                                ${this.formatPropertyValue(cVal, eVal)}
+                            </div>`;
+                        }
+
+                        html += `</div>`;
+                    }
+                }
+
+                // Display remaining properties in "Other" section
+                const usedProps = new Set(Object.values(categories).flat());
+                const otherProps = nonWeaponProps.filter(p => !usedProps.has(p) && classicEntity?.AllProperties?.[p]);
+
+                if (otherProps.length > 0) {
+                    html += `<div class="property-section">
+                        <div class="property-section-title">Other Properties</div>`;
+
+                    for (const prop of otherProps.sort()) {
+                        const cVal = classicEntity?.AllProperties?.[prop] || enhancedEntity?.AllProperties?.[prop] || '—';
+                        const eVal = enhancedEntity?.AllProperties?.[prop] || classicEntity?.AllProperties?.[prop] || '—';
+                        
+                        html += `<div class="property-item">
+                            <span class="property-label">${prop}</span>
+                            ${this.formatPropertyValue(cVal, eVal)}
+                        </div>`;
+                    }
+
+                    html += `</div>`;
+                }
+
+                // Render weapons
+                if (classicEntity?.Weapons || enhancedEntity?.Weapons) {
+                    html += `<div style="grid-column: 1 / -1;"></div>`;
+
+                    for (const weaponSlot of ['Primary', 'Secondary', 'Elite']) {
+                        const classicWeapon = classicEntity?.Weapons?.[weaponSlot];
+                        const enhancedWeapon = enhancedEntity?.Weapons?.[weaponSlot];
+
+                        if (classicWeapon || enhancedWeapon) {
+                            html += `<div class="weapon-section">
+                                <div class="weapon-slot-title">
+                                    ${weaponSlot} Weapon
+                                </div>`;
+                            
+                            html += this.renderWeaponSlotContent(weaponSlot, classicWeapon, enhancedWeapon);
+                            
+                            html += `</div>`;
+                        }
+                    }
+                }
+
+                document.getElementById('detailContent').innerHTML = `<div class="properties-grid">${html}</div>`;
+            }
+        }
+
+        const dashboard = new DTAStatsDashboard();
+    </script>
+</body>
+</html>
