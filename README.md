@@ -40,7 +40,7 @@ Organized into intuitive categories:
 
 1. **Generate the Data File** (if `game_data.json` doesn't exist)
    ```bash
-   cd "c:\DTA\Dawn of the Tiberium Age"
+  cd "path\to\dta-stats-viewer"
    python parse_game_data.py
    ```
 
@@ -62,15 +62,14 @@ Organized into intuitive categories:
 ## File Structure
 
 ```
-c:\DTA\Dawn of the Tiberium Age\
+dta-stats-viewer/
 ├── index.html                 # Main dashboard UI
 ├── game_data.json            # Parsed game data (auto-generated)
 ├── parse_game_data.py        # Script to generate game_data.json
 ├── verify_data.py            # Data verification utility
 └── INI/
-    └── Base/
-        ├── Rules.ini         # Classic game rules
-        └── Enhance.ini       # Enhanced mode overrides
+  ├── Rules.ini             # Classic game rules
+  └── Enhance.ini           # Enhanced mode overrides
 ```
 
 ## How It Works

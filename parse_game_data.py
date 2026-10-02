@@ -45,8 +45,8 @@ class INIParser:
 
 def resolve_entity_with_base(entity_id, sections, visited=None):
     """
-    Resolve an entity's data including BaseSection inheritance.
-    BaseSection allows entities to inherit from other entities.
+    Resolve an entity's data including $Inherits inheritance.
+    $Inherits allows entities to inherit from other entities.
     """
     if visited is None:
         visited = set()
@@ -60,9 +60,9 @@ def resolve_entity_with_base(entity_id, sections, visited=None):
     
     entity_data = sections[entity_id].copy()
     
-    # Check for BaseSection and resolve recursively
-    if 'BaseSection' in entity_data:
-        base_id = entity_data['BaseSection']
+    # Check for $Inherits and resolve recursively
+    if '$Inherits' in entity_data:
+        base_id = entity_data['$Inherits']
         base_data = resolve_entity_with_base(base_id, sections, visited)
         # Base data goes first, entity data overrides it
         resolved = base_data.copy()
@@ -105,7 +105,8 @@ def extract_entities(parser, entity_type):
         if entity_id in parser.sections:
             # Resolve BaseSection inheritance
             resolved = resolve_entity_with_base(entity_id, parser.sections)
-            entities[entity_id] = resolved
+            if resolved.get('InvisibleInGame', '').lower() != 'yes':
+                entities[entity_id] = resolved
     
     return entities
 
@@ -193,7 +194,7 @@ def get_weapon_data(weapon_id, all_sections):
             proj_data = resolve_entity_with_base(projectile_id, all_sections)
             # Normalize projectile properties
             normalized_proj_props = {k: normalize_value(v) for k, v in proj_data.items() 
-                                     if k not in ['ID', 'Name', 'BaseSection'] and v}
+                                     if k not in ['ID', 'Name', '$Inherits'] and v}
             weapon_info['ProjectileDetails'] = {
                 'ID': projectile_id,
                 'Name': proj_data.get('Name', projectile_id),
@@ -209,7 +210,7 @@ def get_weapon_data(weapon_id, all_sections):
             wh_data_renamed = rename_weapon_modifiers(wh_data)
             # Normalize warhead properties
             normalized_wh_props = {k: normalize_value(v) for k, v in wh_data_renamed.items() 
-                                   if k not in ['ID', 'Name', 'BaseSection'] and v}
+                                   if k not in ['ID', 'Name', '$Inherits'] and v}
             weapon_info['WarheadDetails'] = {
                 'ID': warhead_id,
                 'Name': wh_data.get('Name', warhead_id),
@@ -286,17 +287,18 @@ def format_entity_data(entity_id, entity_data, entity_type, enhanced=False, all_
     return result
 
 def main():
-    base_path = Path(r'c:\DTA\Dawn of the Tiberium Age\INI\Base')
+    project_path = Path(__file__).resolve().parent
+    ini_path = project_path / 'INI'
     
     # Parse classic rules
     print("Parsing Rules.ini (Classic mode)...")
     parser_classic = INIParser()
-    parser_classic.parse_file(str(base_path / 'Rules.ini'))
+    parser_classic.parse_file(str(ini_path / 'Rules.ini'))
     
     # Parse enhanced rules
     print("Parsing Enhance.ini (Enhanced mode)...")
     parser_enhanced = INIParser()
-    parser_enhanced.parse_file(str(base_path / 'Enhance.ini'))
+    parser_enhanced.parse_file(str(ini_path / 'Enhance.ini'))
     
     # Extract entities with BaseSection resolution
     print("Extracting entities...")
@@ -388,7 +390,8 @@ def main():
         for idx, entity_id in entity_list_classic:
             if entity_id in merged_sections:
                 resolved = resolve_entity_with_base(entity_id, merged_sections)
-                entities[entity_id] = resolved
+                if resolved.get('InvisibleInGame', '').lower() != 'yes':
+                    entities[entity_id] = resolved
         return entities
     
     # Get the entity lists from classic parser
@@ -440,7 +443,7 @@ def main():
         output['modes']['enhanced']['aircraft'][ent_id] = formatted
     
     # Write output
-    output_path = base_path.parent.parent / 'game_data.json'
+    output_path = project_path / 'game_data.json'
     print(f"Writing output to {output_path}...")
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2, ensure_ascii=False)

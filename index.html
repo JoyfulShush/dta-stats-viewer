@@ -423,7 +423,8 @@
             </div>
 
             <div class="tabs" id="tabs">
-                <button class="tab-btn active" data-tab="buildings">Buildings</button>
+                <button class="tab-btn active" data-tab="all">All</button>
+                <button class="tab-btn" data-tab="buildings">Buildings</button>
                 <button class="tab-btn" data-tab="infantry">Infantry</button>
                 <button class="tab-btn" data-tab="vehicles">Vehicles</button>
                 <button class="tab-btn" data-tab="naval">Naval</button>
@@ -468,7 +469,7 @@
         class DTAStatsDashboard {
             constructor() {
                 this.gameData = null;
-                this.currentTab = 'buildings';
+                this.currentTab = 'all';
                 this.filteredEntities = [];
                 this.selectedEntity = null;
                 this.init();
@@ -541,6 +542,7 @@
                 let entities = [];
 
                 const tabMap = {
+                    'all': ['buildings', 'infantry', 'vehicles', 'naval', 'aircraft'],
                     'buildings': ['buildings'],
                     'infantry': ['infantry'],
                     'vehicles': ['vehicles'],
@@ -646,8 +648,8 @@
                 // Clear search and reset tabs
                 document.getElementById('searchInput').value = '';
                 document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                document.querySelector('[data-tab="buildings"]').classList.add('active');
-                this.currentTab = 'buildings';
+                document.querySelector('[data-tab="all"]').classList.add('active');
+                this.currentTab = 'all';
                 
                 document.getElementById('listView').style.display = 'block';
                 this.selectedEntity = null;
