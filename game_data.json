@@ -12381,7 +12381,7 @@
         },
         "BRIK_AI": {
           "ID": "BRIK_AI",
-          "Name": "Concrete wall",
+          "Name": "AI Concrete wall",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12416,7 +12416,7 @@
         },
         "GUN1_AI": {
           "ID": "GUN1_AI",
-          "Name": "Nod Gun Turret",
+          "Name": "AI Extra Gun Turret",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12503,7 +12503,7 @@
         },
         "HPAD_AI": {
           "ID": "HPAD_AI",
-          "Name": "GDI Helipad",
+          "Name": "AI Nod Helipad",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12546,7 +12546,7 @@
         },
         "AHPAD_AI": {
           "ID": "AHPAD_AI",
-          "Name": "GDI Helipad",
+          "Name": "AI Allied Helipad",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12589,7 +12589,7 @@
         },
         "NUK2A_AI": {
           "ID": "NUK2A_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant A",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12628,7 +12628,7 @@
         },
         "NUK2B_AI": {
           "ID": "NUK2B_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant B",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12667,7 +12667,7 @@
         },
         "NUK2C_AI": {
           "ID": "NUK2C_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant B",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12706,7 +12706,7 @@
         },
         "NUK2D_AI": {
           "ID": "NUK2D_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant D",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12745,7 +12745,7 @@
         },
         "NUK2E_AI": {
           "ID": "NUK2E_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Tiberium Fuel Adv. Power Plant",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12784,7 +12784,7 @@
         },
         "NUK2F_AI": {
           "ID": "NUK2F_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant F (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12823,7 +12823,7 @@
         },
         "NUK2G_AI": {
           "ID": "NUK2G_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant G",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12862,7 +12862,7 @@
         },
         "NUK2H_AI": {
           "ID": "NUK2H_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant H (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12901,7 +12901,7 @@
         },
         "NUK2I_AI": {
           "ID": "NUK2I_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant I (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12940,7 +12940,7 @@
         },
         "NUK2J_AI": {
           "ID": "NUK2J_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant J",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -12979,7 +12979,7 @@
         },
         "RAGUN_AI": {
           "ID": "RAGUN_AI",
-          "Name": "Allied Gun Turret",
+          "Name": "AI RA Gun Turret",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13144,7 +13144,7 @@
         },
         "GUN_AI": {
           "ID": "GUN_AI",
-          "Name": "Nod Gun Turret",
+          "Name": "AI Gun Turret",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13231,7 +13231,7 @@
         },
         "RAPBOX_AI": {
           "ID": "RAPBOX_AI",
-          "Name": "Pill Box",
+          "Name": "AI Pill Box",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13308,7 +13308,7 @@
         },
         "RAFTUR_AI": {
           "ID": "RAFTUR_AI",
-          "Name": "Flame Tower",
+          "Name": "AI Flame Turret",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13394,7 +13394,7 @@
         },
         "TWR1_AI": {
           "ID": "TWR1_AI",
-          "Name": "Guard Tower",
+          "Name": "AI Extra Guard Tower",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13473,7 +13473,7 @@
         },
         "RAPBOX1_AI": {
           "ID": "RAPBOX1_AI",
-          "Name": "Pill Box",
+          "Name": "AI Extra Pill Box",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13550,7 +13550,7 @@
         },
         "RAFTUR1_AI": {
           "ID": "RAFTUR1_AI",
-          "Name": "Flame Tower",
+          "Name": "AI Extra Flame Turret",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13636,7 +13636,7 @@
         },
         "RAHBOX_AI": {
           "ID": "RAHBOX_AI",
-          "Name": "Camouflaged Pill Box",
+          "Name": "AI Camouflaged Pill Box",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13713,7 +13713,7 @@
         },
         "SAM_AI": {
           "ID": "SAM_AI",
-          "Name": "SAM Site",
+          "Name": "AI SAM Site",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13807,7 +13807,7 @@
         },
         "RASAM_AI": {
           "ID": "RASAM_AI",
-          "Name": "SAM Site",
+          "Name": "AI SAM Site",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13902,7 +13902,7 @@
         },
         "RAAGUN_AI": {
           "ID": "RAAGUN_AI",
-          "Name": "Anti-aircraft Gun",
+          "Name": "AI Anti-aircraft Artillery",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -13987,7 +13987,7 @@
         },
         "GSYRD_AI": {
           "ID": "GSYRD_AI",
-          "Name": "Shipyard",
+          "Name": "AI GDI Naval Yard",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -14028,7 +14028,7 @@
         },
         "NSYRD_AI": {
           "ID": "NSYRD_AI",
-          "Name": "Nod Naval Yard",
+          "Name": "AI Nod Naval Yard",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -14069,7 +14069,7 @@
         },
         "ASYRD_AI": {
           "ID": "ASYRD_AI",
-          "Name": "Allied Naval Yard",
+          "Name": "AI Allied Naval Yard",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -14110,7 +14110,7 @@
         },
         "RASPEN_AI": {
           "ID": "RASPEN_AI",
-          "Name": "Sub Pen",
+          "Name": "AI Sub Pen",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -14242,7 +14242,7 @@
         },
         "RAPROC_AI": {
           "ID": "RAPROC_AI",
-          "Name": "Ore Refinery",
+          "Name": "AI Ore Refinery",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -14290,7 +14290,7 @@
         },
         "TDPROC_AI": {
           "ID": "TDPROC_AI",
-          "Name": "Tiberium Refinery",
+          "Name": "AI TD Refinery",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -15075,7 +15075,7 @@
         },
         "DMSA_AI": {
           "ID": "DMSA_AI",
-          "Name": "Deployed Sensor Array",
+          "Name": "AI Deployed Sensor Array",
           "Type": "Building",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36121,7 +36121,7 @@
         },
         "AIJEEP": {
           "ID": "AIJEEP",
-          "Name": "Hum-vee",
+          "Name": "AI Hum-vee",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36242,7 +36242,7 @@
         },
         "AIMTNK": {
           "ID": "AIMTNK",
-          "Name": "GDI Medium Tank",
+          "Name": "AI GDI Medium Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36415,7 +36415,7 @@
         },
         "AIMSAM": {
           "ID": "AIMSAM",
-          "Name": "Rocket Launcher",
+          "Name": "AI Rocket Launcher",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36607,7 +36607,7 @@
         },
         "AIDISCARTY": {
           "ID": "AIDISCARTY",
-          "Name": "Disc Launcher",
+          "Name": "AI Disc Launcher",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36707,7 +36707,7 @@
         },
         "AIHTNK": {
           "ID": "AIHTNK",
-          "Name": "GDI Mammoth Tank",
+          "Name": "AI GDI Mammoth Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -36887,7 +36887,7 @@
         },
         "AIHTNK2": {
           "ID": "AIHTNK2",
-          "Name": "GDI Mammoth Tank",
+          "Name": "AI GDI Mammoth Tank (no AA)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37065,7 +37065,7 @@
         },
         "AIXO": {
           "ID": "AIXO",
-          "Name": "X-O Power Suit",
+          "Name": "AI X-O Power Suit",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37222,7 +37222,7 @@
         },
         "AIBIKE": {
           "ID": "AIBIKE",
-          "Name": "Recon Bike",
+          "Name": "AI Recon Bike (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37406,7 +37406,7 @@
         },
         "AIBIKE2": {
           "ID": "AIBIKE2",
-          "Name": "Recon Bike",
+          "Name": "AI Recon Bike (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37590,7 +37590,7 @@
         },
         "AIBGGY": {
           "ID": "AIBGGY",
-          "Name": "Nod Buggy",
+          "Name": "AI Nod Buggy (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37710,7 +37710,7 @@
         },
         "AIBGGY2": {
           "ID": "AIBGGY2",
-          "Name": "Nod Buggy",
+          "Name": "AI Nod Buggy (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37830,7 +37830,7 @@
         },
         "AILTNK": {
           "ID": "AILTNK",
-          "Name": "Nod Light Tank",
+          "Name": "AI Nod Light Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -37963,7 +37963,7 @@
         },
         "AIFTNK": {
           "ID": "AIFTNK",
-          "Name": "Flame Tank",
+          "Name": "AI Flame Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38093,7 +38093,7 @@
         },
         "AIRAIDER": {
           "ID": "AIRAIDER",
-          "Name": "Heavy Raider",
+          "Name": "AI Heavy Raider",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38227,7 +38227,7 @@
         },
         "AISTNK": {
           "ID": "AISTNK",
-          "Name": "Stealth Tank",
+          "Name": "AI Stealth Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38420,7 +38420,7 @@
         },
         "AIMLRS": {
           "ID": "AIMLRS",
-          "Name": "SSM Launcher",
+          "Name": "AI SSM Launcher",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38571,7 +38571,7 @@
         },
         "AIMWAVE": {
           "ID": "AIMWAVE",
-          "Name": "Microwave Tank",
+          "Name": "AI Microwave Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38701,7 +38701,7 @@
         },
         "AIPLSM": {
           "ID": "AIPLSM",
-          "Name": "Illuminator",
+          "Name": "AI Illuminator",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38836,7 +38836,7 @@
         },
         "AISCRINTNK": {
           "ID": "AISCRINTNK",
-          "Name": "Harbinger",
+          "Name": "AI Harbinger",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -38968,7 +38968,7 @@
         },
         "AIARTY": {
           "ID": "AIARTY",
-          "Name": "Mobile Artillery",
+          "Name": "AI Nod Artillery",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39106,7 +39106,7 @@
         },
         "AIRAARTY": {
           "ID": "AIRAARTY",
-          "Name": "Mobile Artillery",
+          "Name": "AI Allied Artillery",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39244,7 +39244,7 @@
         },
         "AIRANG": {
           "ID": "AIRANG",
-          "Name": "Ranger",
+          "Name": "AI Ranger (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39365,7 +39365,7 @@
         },
         "AIRANG2": {
           "ID": "AIRANG2",
-          "Name": "Ranger",
+          "Name": "AI Ranger (Speed=7)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39486,7 +39486,7 @@
         },
         "AI1TNK": {
           "ID": "AI1TNK",
-          "Name": "Allied Light Tank",
+          "Name": "AI Allied Light Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39619,7 +39619,7 @@
         },
         "AI2TNK": {
           "ID": "AI2TNK",
-          "Name": "Allied Medium Tank",
+          "Name": "AI Allied Medium Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39752,7 +39752,7 @@
         },
         "AIMFLAK": {
           "ID": "AIMFLAK",
-          "Name": "Anti-Aircraft Truck",
+          "Name": "AI Anti-Aircraft Truck",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -39877,7 +39877,7 @@
         },
         "AICTNK": {
           "ID": "AICTNK",
-          "Name": "Chrono Tank",
+          "Name": "AI Chrono Tank (Combat Mode)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40076,7 +40076,7 @@
         },
         "AITNKD": {
           "ID": "AITNKD",
-          "Name": "Tank Destroyer",
+          "Name": "AI Tank Destroyer",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40211,7 +40211,7 @@
         },
         "AIBFRT": {
           "ID": "AIBFRT",
-          "Name": "Enforcer",
+          "Name": "AI Enforcer",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40387,7 +40387,7 @@
         },
         "AI3TNK": {
           "ID": "AI3TNK",
-          "Name": "Heavy Tank",
+          "Name": "AI Heavy Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40520,7 +40520,7 @@
         },
         "AIV2RL": {
           "ID": "AIV2RL",
-          "Name": "V2 Launcher",
+          "Name": "AI V2 Launcher",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40661,7 +40661,7 @@
         },
         "AITTNK": {
           "ID": "AITTNK",
-          "Name": "Tesla Tank",
+          "Name": "AI Tesla Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40752,7 +40752,7 @@
         },
         "AI4TNK": {
           "ID": "AI4TNK",
-          "Name": "Soviet Mammoth Tank",
+          "Name": "AI Soviet Mammoth Tank",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -40932,7 +40932,7 @@
         },
         "AI4TNK2": {
           "ID": "AI4TNK2",
-          "Name": "Soviet Mammoth Tank",
+          "Name": "AI Soviet Mammoth Tank (no AA)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -41110,7 +41110,7 @@
         },
         "AIBEHEMOTH": {
           "ID": "AIBEHEMOTH",
-          "Name": "Behemoth Tank",
+          "Name": "AI Behemoth",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -41262,7 +41262,7 @@
         },
         "AISHILKA": {
           "ID": "AISHILKA",
-          "Name": "Quad Tank",
+          "Name": "AI Quad Tank (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47050,7 +47050,7 @@
         },
         "AIBOAT": {
           "ID": "AIBOAT",
-          "Name": "Gunboat",
+          "Name": "AI Gunboat",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47241,7 +47241,7 @@
         },
         "AIMCRUISE": {
           "ID": "AIMCRUISE",
-          "Name": "Missile Cruiser",
+          "Name": "AI Missile Cruiser",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47438,7 +47438,7 @@
         },
         "AICARRIER": {
           "ID": "AICARRIER",
-          "Name": "Aircraft Carrier",
+          "Name": "AI Aircraft Carrier",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47542,7 +47542,7 @@
         },
         "AISPEEDBOAT": {
           "ID": "AISPEEDBOAT",
-          "Name": "Scarab Speedboat",
+          "Name": "AI Scarab Speedboat",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47712,7 +47712,7 @@
         },
         "AITORPBOAT": {
           "ID": "AITORPBOAT",
-          "Name": "Torpedo Boat",
+          "Name": "AI Torpedo Boat",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -47858,7 +47858,7 @@
         },
         "AISCARAB": {
           "ID": "AISCARAB",
-          "Name": "Scarab",
+          "Name": "AI Scarab",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48027,7 +48027,7 @@
         },
         "AILASCOR": {
           "ID": "AILASCOR",
-          "Name": "Laser Corvette",
+          "Name": "AI Laser Corvette",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48161,7 +48161,7 @@
         },
         "AISBOAT": {
           "ID": "AISBOAT",
-          "Name": "Sea Shadow",
+          "Name": "AI Sea Shadow",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48272,7 +48272,7 @@
         },
         "AIDESTROYER": {
           "ID": "AIDESTROYER",
-          "Name": "Corvette",
+          "Name": "AI Corvette",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48408,7 +48408,7 @@
         },
         "AIFRIGATE": {
           "ID": "AIFRIGATE",
-          "Name": "Frigate",
+          "Name": "AI Frigate",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48603,7 +48603,7 @@
         },
         "AICRUISER": {
           "ID": "AICRUISER",
-          "Name": "Cruiser",
+          "Name": "AI Cruiser",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48746,7 +48746,7 @@
         },
         "AISS": {
           "ID": "AISS",
-          "Name": "Submarine",
+          "Name": "AI Submarine",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -48899,7 +48899,7 @@
         },
         "AIMSUB": {
           "ID": "AIMSUB",
-          "Name": "Missile Submarine",
+          "Name": "AI Missile Submarine",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -49102,7 +49102,7 @@
         },
         "AILUN": {
           "ID": "AILUN",
-          "Name": "Lun Attack Ekranoplan",
+          "Name": "AI \"Lun\" Ekranoplan (Speed=6)",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -49293,7 +49293,7 @@
         },
         "AIP941": {
           "ID": "AIP941",
-          "Name": "Project 941",
+          "Name": "AI Project 941",
           "Type": "Naval",
           "IsEnhanced": false,
           "AllProperties": {
@@ -63730,7 +63730,7 @@
         },
         "BRIK_AI": {
           "ID": "BRIK_AI",
-          "Name": "Concrete wall",
+          "Name": "AI Concrete wall",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -63765,7 +63765,7 @@
         },
         "GUN1_AI": {
           "ID": "GUN1_AI",
-          "Name": "Nod Gun Turret",
+          "Name": "AI Extra Gun Turret",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -63852,7 +63852,7 @@
         },
         "HPAD_AI": {
           "ID": "HPAD_AI",
-          "Name": "GDI Helipad",
+          "Name": "AI Nod Helipad",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -63895,7 +63895,7 @@
         },
         "AHPAD_AI": {
           "ID": "AHPAD_AI",
-          "Name": "GDI Helipad",
+          "Name": "AI Allied Helipad",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -63938,7 +63938,7 @@
         },
         "NUK2A_AI": {
           "ID": "NUK2A_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant A",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -63977,7 +63977,7 @@
         },
         "NUK2B_AI": {
           "ID": "NUK2B_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant B",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64016,7 +64016,7 @@
         },
         "NUK2C_AI": {
           "ID": "NUK2C_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant B",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64055,7 +64055,7 @@
         },
         "NUK2D_AI": {
           "ID": "NUK2D_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant D",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64094,7 +64094,7 @@
         },
         "NUK2E_AI": {
           "ID": "NUK2E_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Tiberium Fuel Adv. Power Plant",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64133,7 +64133,7 @@
         },
         "NUK2F_AI": {
           "ID": "NUK2F_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant F (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64172,7 +64172,7 @@
         },
         "NUK2G_AI": {
           "ID": "NUK2G_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant G",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64211,7 +64211,7 @@
         },
         "NUK2H_AI": {
           "ID": "NUK2H_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant H (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64250,7 +64250,7 @@
         },
         "NUK2I_AI": {
           "ID": "NUK2I_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant I (Tiberium Fuel)",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64289,7 +64289,7 @@
         },
         "NUK2J_AI": {
           "ID": "NUK2J_AI",
-          "Name": "Adv. Power Plant",
+          "Name": "AI Extra Adv. Power Plant J",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64328,7 +64328,7 @@
         },
         "RAGUN_AI": {
           "ID": "RAGUN_AI",
-          "Name": "Nod Gun Turret",
+          "Name": "AI RA Gun Turret",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64493,7 +64493,7 @@
         },
         "GUN_AI": {
           "ID": "GUN_AI",
-          "Name": "Nod Gun Turret",
+          "Name": "AI Gun Turret",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64580,7 +64580,7 @@
         },
         "RAPBOX_AI": {
           "ID": "RAPBOX_AI",
-          "Name": "Pill Box",
+          "Name": "AI Pill Box",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64658,7 +64658,7 @@
         },
         "RAFTUR_AI": {
           "ID": "RAFTUR_AI",
-          "Name": "Flame Tower",
+          "Name": "AI Flame Turret",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64744,7 +64744,7 @@
         },
         "TWR1_AI": {
           "ID": "TWR1_AI",
-          "Name": "Guard Tower",
+          "Name": "AI Extra Guard Tower",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64823,7 +64823,7 @@
         },
         "RAPBOX1_AI": {
           "ID": "RAPBOX1_AI",
-          "Name": "Pill Box",
+          "Name": "AI Extra Pill Box",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64901,7 +64901,7 @@
         },
         "RAFTUR1_AI": {
           "ID": "RAFTUR1_AI",
-          "Name": "Flame Tower",
+          "Name": "AI Extra Flame Turret",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -64987,7 +64987,7 @@
         },
         "RAHBOX_AI": {
           "ID": "RAHBOX_AI",
-          "Name": "Camouflaged Pill Box",
+          "Name": "AI Camouflaged Pill Box",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65065,7 +65065,7 @@
         },
         "SAM_AI": {
           "ID": "SAM_AI",
-          "Name": "SAM Site",
+          "Name": "AI SAM Site",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65159,7 +65159,7 @@
         },
         "RASAM_AI": {
           "ID": "RASAM_AI",
-          "Name": "SAM Site",
+          "Name": "AI SAM Site",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65254,7 +65254,7 @@
         },
         "RAAGUN_AI": {
           "ID": "RAAGUN_AI",
-          "Name": "Anti-aircraft Gun",
+          "Name": "AI Anti-aircraft Artillery",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65339,7 +65339,7 @@
         },
         "GSYRD_AI": {
           "ID": "GSYRD_AI",
-          "Name": "Shipyard",
+          "Name": "AI GDI Naval Yard",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65380,7 +65380,7 @@
         },
         "NSYRD_AI": {
           "ID": "NSYRD_AI",
-          "Name": "Nod Naval Yard",
+          "Name": "AI Nod Naval Yard",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65421,7 +65421,7 @@
         },
         "ASYRD_AI": {
           "ID": "ASYRD_AI",
-          "Name": "Allied Naval Yard",
+          "Name": "AI Allied Naval Yard",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65462,7 +65462,7 @@
         },
         "RASPEN_AI": {
           "ID": "RASPEN_AI",
-          "Name": "Sub Pen",
+          "Name": "AI Sub Pen",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65594,7 +65594,7 @@
         },
         "RAPROC_AI": {
           "ID": "RAPROC_AI",
-          "Name": "Refinery",
+          "Name": "AI Ore Refinery",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -65642,7 +65642,7 @@
         },
         "TDPROC_AI": {
           "ID": "TDPROC_AI",
-          "Name": "Refinery",
+          "Name": "AI TD Refinery",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -66429,7 +66429,7 @@
         },
         "DMSA_AI": {
           "ID": "DMSA_AI",
-          "Name": "Deployed Sensor Array",
+          "Name": "AI Deployed Sensor Array",
           "Type": "Building",
           "IsEnhanced": true,
           "AllProperties": {
@@ -87932,7 +87932,7 @@
         },
         "AIJEEP": {
           "ID": "AIJEEP",
-          "Name": "Hum-vee",
+          "Name": "AI Hum-vee",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88056,7 +88056,7 @@
         },
         "AIMTNK": {
           "ID": "AIMTNK",
-          "Name": "GDI Medium Tank",
+          "Name": "AI GDI Medium Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88232,7 +88232,7 @@
         },
         "AIMSAM": {
           "ID": "AIMSAM",
-          "Name": "Rocket Launcher",
+          "Name": "AI Rocket Launcher",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88427,7 +88427,7 @@
         },
         "AIDISCARTY": {
           "ID": "AIDISCARTY",
-          "Name": "Disc Launcher",
+          "Name": "AI Disc Launcher",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88530,7 +88530,7 @@
         },
         "AIHTNK": {
           "ID": "AIHTNK",
-          "Name": "GDI Mammoth Tank",
+          "Name": "AI GDI Mammoth Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88712,7 +88712,7 @@
         },
         "AIHTNK2": {
           "ID": "AIHTNK2",
-          "Name": "GDI Mammoth Tank",
+          "Name": "AI GDI Mammoth Tank (no AA)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -88891,7 +88891,7 @@
         },
         "AIXO": {
           "ID": "AIXO",
-          "Name": "X-O Power Suit",
+          "Name": "AI X-O Power Suit",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89050,7 +89050,7 @@
         },
         "AIBIKE": {
           "ID": "AIBIKE",
-          "Name": "Recon Bike",
+          "Name": "AI Recon Bike (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89237,7 +89237,7 @@
         },
         "AIBIKE2": {
           "ID": "AIBIKE2",
-          "Name": "Recon Bike",
+          "Name": "AI Recon Bike (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89421,7 +89421,7 @@
         },
         "AIBGGY": {
           "ID": "AIBGGY",
-          "Name": "Nod Buggy",
+          "Name": "AI Nod Buggy (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89545,7 +89545,7 @@
         },
         "AIBGGY2": {
           "ID": "AIBGGY2",
-          "Name": "Nod Buggy",
+          "Name": "AI Nod Buggy (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89669,7 +89669,7 @@
         },
         "AILTNK": {
           "ID": "AILTNK",
-          "Name": "Nod Light Tank",
+          "Name": "AI Nod Light Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -89805,7 +89805,7 @@
         },
         "AIFTNK": {
           "ID": "AIFTNK",
-          "Name": "Flame Tank",
+          "Name": "AI Flame Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90005,7 +90005,7 @@
         },
         "AIRAIDER": {
           "ID": "AIRAIDER",
-          "Name": "Heavy Raider",
+          "Name": "AI Heavy Raider",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90142,7 +90142,7 @@
         },
         "AISTNK": {
           "ID": "AISTNK",
-          "Name": "Stealth Tank",
+          "Name": "AI Stealth Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90338,7 +90338,7 @@
         },
         "AIMLRS": {
           "ID": "AIMLRS",
-          "Name": "SSM Launcher",
+          "Name": "AI SSM Launcher",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90492,7 +90492,7 @@
         },
         "AIMWAVE": {
           "ID": "AIMWAVE",
-          "Name": "Microwave Tank",
+          "Name": "AI Microwave Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90624,7 +90624,7 @@
         },
         "AIPLSM": {
           "ID": "AIPLSM",
-          "Name": "Illuminator",
+          "Name": "AI Illuminator",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90762,7 +90762,7 @@
         },
         "AISCRINTNK": {
           "ID": "AISCRINTNK",
-          "Name": "Harbinger",
+          "Name": "AI Harbinger",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -90897,7 +90897,7 @@
         },
         "AIARTY": {
           "ID": "AIARTY",
-          "Name": "Mobile Artillery",
+          "Name": "AI Nod Artillery",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91038,7 +91038,7 @@
         },
         "AIRAARTY": {
           "ID": "AIRAARTY",
-          "Name": "Mobile Artillery",
+          "Name": "AI Allied Artillery",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91179,7 +91179,7 @@
         },
         "AIRANG": {
           "ID": "AIRANG",
-          "Name": "Ranger",
+          "Name": "AI Ranger (Speed=6)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91303,7 +91303,7 @@
         },
         "AIRANG2": {
           "ID": "AIRANG2",
-          "Name": "Ranger",
+          "Name": "AI Ranger (Speed=7)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91427,7 +91427,7 @@
         },
         "AI1TNK": {
           "ID": "AI1TNK",
-          "Name": "Allied Light Tank",
+          "Name": "AI Allied Light Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91563,7 +91563,7 @@
         },
         "AI2TNK": {
           "ID": "AI2TNK",
-          "Name": "Allied Medium Tank",
+          "Name": "AI Allied Medium Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91699,7 +91699,7 @@
         },
         "AIMFLAK": {
           "ID": "AIMFLAK",
-          "Name": "Anti-Aircraft Truck",
+          "Name": "AI Anti-Aircraft Truck",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -91827,7 +91827,7 @@
         },
         "AICTNK": {
           "ID": "AICTNK",
-          "Name": "Chrono Tank",
+          "Name": "AI Chrono Tank (Combat Mode)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92029,7 +92029,7 @@
         },
         "AITNKD": {
           "ID": "AITNKD",
-          "Name": "Tank Destroyer",
+          "Name": "AI Tank Destroyer",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92166,7 +92166,7 @@
         },
         "AIBFRT": {
           "ID": "AIBFRT",
-          "Name": "Enforcer",
+          "Name": "AI Enforcer",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92344,7 +92344,7 @@
         },
         "AI3TNK": {
           "ID": "AI3TNK",
-          "Name": "Heavy Tank",
+          "Name": "AI Heavy Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92480,7 +92480,7 @@
         },
         "AIV2RL": {
           "ID": "AIV2RL",
-          "Name": "V2 Launcher",
+          "Name": "AI V2 Launcher",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92624,7 +92624,7 @@
         },
         "AITTNK": {
           "ID": "AITTNK",
-          "Name": "Tesla Tank",
+          "Name": "AI Tesla Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92719,7 +92719,7 @@
         },
         "AI4TNK": {
           "ID": "AI4TNK",
-          "Name": "Soviet Mammoth Tank",
+          "Name": "AI Soviet Mammoth Tank",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -92901,7 +92901,7 @@
         },
         "AI4TNK2": {
           "ID": "AI4TNK2",
-          "Name": "Soviet Mammoth Tank",
+          "Name": "AI Soviet Mammoth Tank (no AA)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -93079,7 +93079,7 @@
         },
         "AIBEHEMOTH": {
           "ID": "AIBEHEMOTH",
-          "Name": "Behemoth Tank",
+          "Name": "AI Behemoth",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -93234,7 +93234,7 @@
         },
         "AISHILKA": {
           "ID": "AISHILKA",
-          "Name": "Quad Tank",
+          "Name": "AI Quad Tank (Normal Speed)",
           "Type": "Vehicle",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99044,7 +99044,7 @@
         },
         "AIBOAT": {
           "ID": "AIBOAT",
-          "Name": "Gunboat",
+          "Name": "AI Gunboat",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99235,7 +99235,7 @@
         },
         "AIMCRUISE": {
           "ID": "AIMCRUISE",
-          "Name": "Missile Cruiser",
+          "Name": "AI Missile Cruiser",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99432,7 +99432,7 @@
         },
         "AICARRIER": {
           "ID": "AICARRIER",
-          "Name": "Aircraft Carrier",
+          "Name": "AI Aircraft Carrier",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99536,7 +99536,7 @@
         },
         "AISPEEDBOAT": {
           "ID": "AISPEEDBOAT",
-          "Name": "Scarab Speedboat",
+          "Name": "AI Scarab Speedboat",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99706,7 +99706,7 @@
         },
         "AITORPBOAT": {
           "ID": "AITORPBOAT",
-          "Name": "Torpedo Boat",
+          "Name": "AI Torpedo Boat",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -99852,7 +99852,7 @@
         },
         "AISCARAB": {
           "ID": "AISCARAB",
-          "Name": "Scarab",
+          "Name": "AI Scarab",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100021,7 +100021,7 @@
         },
         "AILASCOR": {
           "ID": "AILASCOR",
-          "Name": "Laser Corvette",
+          "Name": "AI Laser Corvette",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100155,7 +100155,7 @@
         },
         "AISBOAT": {
           "ID": "AISBOAT",
-          "Name": "Sea Shadow",
+          "Name": "AI Sea Shadow",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100266,7 +100266,7 @@
         },
         "AIDESTROYER": {
           "ID": "AIDESTROYER",
-          "Name": "Corvette",
+          "Name": "AI Corvette",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100402,7 +100402,7 @@
         },
         "AIFRIGATE": {
           "ID": "AIFRIGATE",
-          "Name": "Frigate",
+          "Name": "AI Frigate",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100597,7 +100597,7 @@
         },
         "AICRUISER": {
           "ID": "AICRUISER",
-          "Name": "Cruiser",
+          "Name": "AI Cruiser",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100740,7 +100740,7 @@
         },
         "AISS": {
           "ID": "AISS",
-          "Name": "Submarine",
+          "Name": "AI Submarine",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -100894,7 +100894,7 @@
         },
         "AIMSUB": {
           "ID": "AIMSUB",
-          "Name": "Missile Submarine",
+          "Name": "AI Missile Submarine",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -101098,7 +101098,7 @@
         },
         "AILUN": {
           "ID": "AILUN",
-          "Name": "Lun Attack Ekranoplan",
+          "Name": "AI \"Lun\" Ekranoplan (Speed=6)",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {
@@ -101289,7 +101289,7 @@
         },
         "AIP941": {
           "ID": "AIP941",
-          "Name": "Project 941",
+          "Name": "AI Project 941",
           "Type": "Naval",
           "IsEnhanced": true,
           "AllProperties": {

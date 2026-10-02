@@ -247,7 +247,8 @@ def format_entity_data(entity_id, entity_data, entity_type, enhanced=False, all_
     if all_sections is None:
         all_sections = {}
     
-    name = entity_data.get('Name', entity_id)
+    editor_name = entity_data.get('EditorName', '')
+    name = editor_name if editor_name.startswith('AI ') else entity_data.get('Name', entity_id)
     
     # Normalize yes/no values in a copy of entity_data
     normalized_data = {}
