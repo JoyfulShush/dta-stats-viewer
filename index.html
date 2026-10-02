@@ -180,18 +180,129 @@
             display: block;
         }
 
-        .detail-header {
+        .detail-toolbar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--color-border);
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 16px;
         }
 
-        .detail-header h2 {
-            font-size: 2em;
+        .detail-columns {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .detail-columns.comparing {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .detail-pane {
+            min-width: 0;
+        }
+
+        .detail-pane-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .detail-pane-header h2 {
+            font-size: 1.5em;
             color: var(--color-accent);
+            overflow-wrap: anywhere;
+            margin-bottom: 8px;
+        }
+
+        .compare-btn,
+        .remove-compare-btn {
+            padding: 10px 14px;
+            background: var(--color-secondary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .compare-btn:hover,
+        .remove-compare-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .comparison-search {
+            margin-bottom: 18px;
+            padding: 14px;
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+        }
+
+        .comparison-search label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .comparison-search input {
+            width: 100%;
+            padding: 11px 12px;
+            background: var(--color-primary);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .comparison-search input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .compare-results {
+            display: grid;
+            gap: 6px;
+            max-height: 240px;
+            overflow-y: auto;
+            margin-top: 8px;
+        }
+
+        .compare-result {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--color-text);
+            background: var(--color-primary);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .compare-result:hover {
+            border-color: var(--color-accent);
+        }
+
+        .compare-result-meta,
+        .compare-empty {
+            color: var(--color-text-dim);
+        }
+
+        .compare-empty {
+            margin: 4px 0 0;
+        }
+
+        .detail-columns.comparing .properties-grid {
+            grid-template-columns: minmax(0, 1fr);
         }
 
         .back-btn {
@@ -403,6 +514,17 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 760px) {
+            .detail-columns.comparing {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .compare-result {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -441,12 +563,15 @@
 
             <!-- Detail View -->
             <div id="detailView" class="detail-view">
-                <div class="detail-header">
-                    <div>
-                        <h2 id="detailTitle"></h2>
-                        <div class="meta-badge" id="typeBadge"></div>
-                    </div>
+                <div class="detail-toolbar">
+                    <button class="compare-btn" id="compareToggle" type="button" aria-expanded="false">Compare</button>
                     <button class="back-btn" onclick="dashboard.backToList()">← Back to List</button>
+                </div>
+
+                <div class="comparison-search" id="comparisonSearch" hidden>
+                    <label for="comparisonSearchInput">Search for a unit or structure to compare</label>
+                    <input type="text" id="comparisonSearchInput" placeholder="Search by name or ID" autocomplete="off">
+                    <div class="compare-results" id="comparisonResults" role="listbox"></div>
                 </div>
 
                 <div id="detailViewLegend" class="legend" style="display: none;">
@@ -460,7 +585,27 @@
                     </div>
                 </div>
 
-                <div id="detailContent"></div>
+                <div class="detail-columns" id="detailColumns">
+                    <section class="detail-pane" id="primaryDetailPane">
+                        <div class="detail-pane-header">
+                            <div>
+                                <h2 id="detailTitle"></h2>
+                                <div class="meta-badge" id="typeBadge"></div>
+                            </div>
+                        </div>
+                        <div id="detailContent"></div>
+                    </section>
+                    <section class="detail-pane comparison-pane" id="comparisonPane" hidden>
+                        <div class="detail-pane-header">
+                            <div>
+                                <h2 id="comparisonTitle"></h2>
+                                <div class="meta-badge" id="comparisonTypeBadge"></div>
+                            </div>
+                            <button class="remove-compare-btn" id="removeComparison" type="button">Remove</button>
+                        </div>
+                        <div id="comparisonContent"></div>
+                    </section>
+                </div>
             </div>
         </div>
     </div>
@@ -472,6 +617,7 @@
                 this.currentTab = 'all';
                 this.filteredEntities = [];
                 this.selectedEntity = null;
+                this.comparisonEntity = null;
                 this.init();
             }
 
@@ -497,6 +643,14 @@
 
             setupEventListeners() {
                 document.getElementById('searchInput').addEventListener('input', () => this.render());
+                document.getElementById('compareToggle').addEventListener('click', () => this.toggleComparisonSearch());
+                document.getElementById('comparisonSearchInput').addEventListener('input', () => this.renderComparisonResults());
+                document.getElementById('comparisonResults').addEventListener('click', (event) => {
+                    const result = event.target.closest('[data-entity-id]');
+                    if (result) this.showComparison(result.dataset.entityId, result.dataset.entityType);
+                });
+                document.getElementById('removeComparison').addEventListener('click', () => this.clearComparison());
+                window.addEventListener('resize', () => this.alignComparisonDescriptionRows());
 
                 document.querySelectorAll('.tab-btn').forEach(btn => {
                     btn.addEventListener('click', (e) => {
@@ -506,6 +660,141 @@
                         this.render();
                     });
                 });
+            }
+
+            getEntityDetails(entityId, entityType) {
+                const typeMap = {
+                    'Infantry': 'infantry',
+                    'Vehicle': 'vehicles',
+                    'Naval': 'naval',
+                    'Aircraft': 'aircraft',
+                    'Building': 'buildings'
+                };
+                const category = typeMap[entityType];
+                return {
+                    classicEntity: this.gameData.modes.classic[category]?.[entityId],
+                    enhancedEntity: this.gameData.modes.enhanced[category]?.[entityId]
+                };
+            }
+
+            getComparisonPropertyKeys(leftEntity, rightEntity) {
+                return new Set([
+                    leftEntity.classicEntity,
+                    leftEntity.enhancedEntity,
+                    rightEntity.classicEntity,
+                    rightEntity.enhancedEntity
+                ].flatMap(entity => Object.keys(entity?.AllProperties || {})));
+            }
+
+            toggleComparisonSearch() {
+                const panel = document.getElementById('comparisonSearch');
+                const opening = panel.hidden;
+                panel.hidden = !opening;
+                document.getElementById('compareToggle').setAttribute('aria-expanded', String(opening));
+
+                if (opening) {
+                    const input = document.getElementById('comparisonSearchInput');
+                    input.value = '';
+                    this.renderComparisonResults();
+                    input.focus();
+                }
+            }
+
+            closeComparisonSearch() {
+                document.getElementById('comparisonSearch').hidden = true;
+                document.getElementById('compareToggle').setAttribute('aria-expanded', 'false');
+                document.getElementById('comparisonSearchInput').value = '';
+                document.getElementById('comparisonResults').replaceChildren();
+            }
+
+            renderComparisonResults() {
+                const input = document.getElementById('comparisonSearchInput');
+                const results = document.getElementById('comparisonResults');
+                const query = input.value.trim().toLowerCase();
+                results.replaceChildren();
+
+                const matches = query ? this.getAllEntities().filter(entity => {
+                    const isCurrent = entity.ID === this.selectedEntity?.classicEntity?.ID &&
+                        entity.Type === this.selectedEntity?.entityType;
+                    return !isCurrent && (
+                        entity.Name?.toLowerCase().includes(query) ||
+                        entity.ID?.toLowerCase().includes(query)
+                    );
+                }).slice(0, 12) : [];
+
+                if (!query || matches.length === 0) {
+                    const empty = document.createElement('p');
+                    empty.className = 'compare-empty';
+                    empty.textContent = query ? 'No matching units or structures.' : 'Type a name or ID to search.';
+                    results.append(empty);
+                    return;
+                }
+
+                for (const entity of matches) {
+                    const button = document.createElement('button');
+                    button.className = 'compare-result';
+                    button.type = 'button';
+                    button.dataset.entityId = entity.ID;
+                    button.dataset.entityType = entity.Type;
+
+                    const name = document.createElement('span');
+                    name.textContent = entity.Name || entity.ID;
+                    const details = document.createElement('span');
+                    details.className = 'compare-result-meta';
+                    details.textContent = `${entity.Type} · ${entity.ID}`;
+                    button.append(name, details);
+                    results.append(button);
+                }
+            }
+
+            showComparison(entityId, entityType) {
+                const {classicEntity, enhancedEntity} = this.getEntityDetails(entityId, entityType);
+                if (!classicEntity) return;
+
+                this.comparisonEntity = {classicEntity, enhancedEntity, entityType};
+                document.getElementById('comparisonTitle').textContent = `${classicEntity.Name || entityId} (${entityId})`;
+                const typeBadge = document.getElementById('comparisonTypeBadge');
+                typeBadge.className = `meta-badge type-${entityType.toLowerCase()}`;
+                typeBadge.textContent = entityType;
+                document.getElementById('comparisonPane').hidden = false;
+                document.getElementById('detailColumns').classList.add('comparing');
+                const propertyKeys = this.getComparisonPropertyKeys(this.selectedEntity, this.comparisonEntity);
+                this.populateProperties(
+                    this.selectedEntity.classicEntity,
+                    this.selectedEntity.enhancedEntity,
+                    'detailContent',
+                    propertyKeys
+                );
+                this.populateProperties(classicEntity, enhancedEntity, 'comparisonContent', propertyKeys);
+                this.alignComparisonDescriptionRows();
+                this.closeComparisonSearch();
+            }
+
+            alignComparisonDescriptionRows() {
+                const rows = Array.from(document.querySelectorAll(
+                    '#detailContent [data-property="Description"], #comparisonContent [data-property="Description"]'
+                ));
+                rows.forEach(row => row.style.height = '');
+
+                if (!this.comparisonEntity || rows.length < 2) return;
+
+                const height = Math.max(...rows.map(row => row.getBoundingClientRect().height));
+                rows.forEach(row => row.style.height = `${height}px`);
+            }
+
+            clearComparison() {
+                const hadComparison = Boolean(this.comparisonEntity);
+                this.comparisonEntity = null;
+                document.getElementById('comparisonPane').hidden = true;
+                document.getElementById('detailColumns').classList.remove('comparing');
+                this.alignComparisonDescriptionRows();
+                if (hadComparison && this.selectedEntity) {
+                    this.populateProperties(
+                        this.selectedEntity.classicEntity,
+                        this.selectedEntity.enhancedEntity,
+                        'detailContent'
+                    );
+                }
             }
 
             getAllEntities() {
@@ -604,21 +893,12 @@
             }
 
             showDetails(entityId, entityType) {
-                const mode = this.gameData.modes;
-                const typeMap = {
-                    'Infantry': 'infantry',
-                    'Vehicle': 'vehicles',
-                    'Naval': 'naval',
-                    'Aircraft': 'aircraft',
-                    'Building': 'buildings'
-                };
-                const category = typeMap[entityType];
-                
-                const classicEntity = mode.classic[category][entityId];
-                const enhancedEntity = mode.enhanced[category][entityId];
+                const {classicEntity, enhancedEntity} = this.getEntityDetails(entityId, entityType);
                 
                 if (!classicEntity) return;
 
+                this.clearComparison();
+                this.closeComparisonSearch();
                 this.selectedEntity = {classicEntity, enhancedEntity, entityType};
                 
                 // Hide controls and tabs
@@ -629,17 +909,18 @@
                 document.getElementById('detailView').classList.add('active');
                 document.getElementById('detailViewLegend').style.display = 'block';
 
-                document.getElementById('detailTitle').innerHTML = `${classicEntity.Name || entityId} <span id="detailId" style="font-size: 0.8em; color: var(--color-text-dim);"></span>`;
-                document.getElementById('detailId').textContent = `(${entityId})`;
+                document.getElementById('detailTitle').textContent = `${classicEntity.Name || entityId} (${entityId})`;
                 document.getElementById('typeBadge').className = `meta-badge type-${entityType.toLowerCase()}`;
                 document.getElementById('typeBadge').textContent = entityType;
 
-                this.populateProperties(classicEntity, enhancedEntity);
+                this.populateProperties(classicEntity, enhancedEntity, 'detailContent');
             }
 
             backToList() {
                 document.getElementById('detailView').classList.remove('active');
                 document.getElementById('detailViewLegend').style.display = 'none';
+                this.clearComparison();
+                this.closeComparisonSearch();
                 
                 // Show controls and tabs
                 document.getElementById('controls').style.display = 'flex';
@@ -830,7 +1111,7 @@
                 return html;
             }
 
-            populateProperties(classicEntity, enhancedEntity) {
+            populateProperties(classicEntity, enhancedEntity, targetId = 'detailContent', comparisonPropertyKeys = null) {
                 let html = '';
 
                 // Group properties by category
@@ -845,8 +1126,13 @@
                 // Collect all unique properties
                 const allProps = new Set([
                     ...(classicEntity?.AllProperties ? Object.keys(classicEntity.AllProperties) : []),
-                    ...(enhancedEntity?.AllProperties ? Object.keys(enhancedEntity.AllProperties) : [])
+                    ...(enhancedEntity?.AllProperties ? Object.keys(enhancedEntity.AllProperties) : []),
+                    ...(comparisonPropertyKeys || [])
                 ]);
+                const propertyExists = (entity, property) =>
+                    Object.prototype.hasOwnProperty.call(entity?.AllProperties || {}, property);
+                const missingFromEntity = property =>
+                    !propertyExists(classicEntity, property) && !propertyExists(enhancedEntity, property);
 
                 // Filter out weapon-related properties (handled separately)
                 const nonWeaponProps = Array.from(allProps).filter(p =>
@@ -862,10 +1148,11 @@
                             <div class="property-section-title">${categoryName}</div>`;
 
                         for (const prop of propsInCategory) {
-                            const cVal = classicEntity?.AllProperties?.[prop] || '—';
-                            const eVal = enhancedEntity?.AllProperties?.[prop] || '—';
+                            const missing = missingFromEntity(prop);
+                            const cVal = missing ? '-' : classicEntity?.AllProperties?.[prop] || '—';
+                            const eVal = missing ? '-' : enhancedEntity?.AllProperties?.[prop] || '—';
                             
-                            html += `<div class="property-item">
+                            html += `<div class="property-item" data-property="${prop}">
                                 <span class="property-label">${prop}</span>
                                 ${this.formatPropertyValue(cVal, eVal)}
                             </div>`;
@@ -877,7 +1164,9 @@
 
                 // Display remaining properties in "Other" section
                 const usedProps = new Set(Object.values(categories).flat());
-                const otherProps = nonWeaponProps.filter(p => !usedProps.has(p) && classicEntity?.AllProperties?.[p]);
+                const otherProps = nonWeaponProps.filter(p =>
+                    !usedProps.has(p) && (comparisonPropertyKeys?.has(p) || classicEntity?.AllProperties?.[p])
+                );
 
                 if (otherProps.length > 0) {
                     html += `<div class="property-section">
@@ -885,10 +1174,11 @@
 
                     for (const prop of otherProps.sort()) {
                         const displayProp = prop.replace(/@/g, ' ');
-                        const cVal = String(classicEntity?.AllProperties?.[prop] || enhancedEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
-                        const eVal = String(enhancedEntity?.AllProperties?.[prop] || classicEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
+                        const missing = missingFromEntity(prop);
+                        const cVal = String(missing ? '-' : classicEntity?.AllProperties?.[prop] || enhancedEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
+                        const eVal = String(missing ? '-' : enhancedEntity?.AllProperties?.[prop] || classicEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
                         
-                        html += `<div class="property-item">
+                        html += `<div class="property-item" data-property="${prop}">
                             <span class="property-label">${displayProp}</span>
                             ${this.formatPropertyValue(cVal, eVal)}
                         </div>`;
@@ -918,7 +1208,7 @@
                     }
                 }
 
-                document.getElementById('detailContent').innerHTML = `<div class="properties-grid">${html}</div>`;
+                document.getElementById(targetId).innerHTML = `<div class="properties-grid">${html}</div>`;
             }
         }
 
