@@ -849,7 +849,9 @@
                 ]);
 
                 // Filter out weapon-related properties (handled separately)
-                const nonWeaponProps = Array.from(allProps).filter(p => !['Primary', 'Secondary', 'Elite'].includes(p));
+                const nonWeaponProps = Array.from(allProps).filter(p =>
+                    p !== '$Inherits' && !['Primary', 'Secondary', 'Elite'].includes(p)
+                );
 
                 // Organize properties by category
                 for (const [categoryName, categoryProps] of Object.entries(categories)) {
@@ -882,11 +884,12 @@
                         <div class="property-section-title">Other Properties</div>`;
 
                     for (const prop of otherProps.sort()) {
-                        const cVal = classicEntity?.AllProperties?.[prop] || enhancedEntity?.AllProperties?.[prop] || '—';
-                        const eVal = enhancedEntity?.AllProperties?.[prop] || classicEntity?.AllProperties?.[prop] || '—';
+                        const displayProp = prop.replace(/@/g, ' ');
+                        const cVal = String(classicEntity?.AllProperties?.[prop] || enhancedEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
+                        const eVal = String(enhancedEntity?.AllProperties?.[prop] || classicEntity?.AllProperties?.[prop] || '—').replace(/@/g, ' ');
                         
                         html += `<div class="property-item">
-                            <span class="property-label">${prop}</span>
+                            <span class="property-label">${displayProp}</span>
                             ${this.formatPropertyValue(cVal, eVal)}
                         </div>`;
                     }
